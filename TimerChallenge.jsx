@@ -6,18 +6,13 @@ export default function TimerChallenge({ title, targetTime }) {
     const [timerExpired, setTimerExpired] = useState(false);
 
     function handleStart() {
-        setTimerStarted(true);
-        setTimerExpired(false); // Reset any previous expiration
         timer.current = setTimeout(() => {
             setTimerExpired(true);
-            setTimerStarted(false); // Automatically stop when expired
         }, targetTime * 1000);
     }
 
     function handleStop() {
         clearTimeout(timer.current);
-        setTimerStarted(false); // Reset timer state
-        setTimerExpired(false); // Optional: reset "You Lost!" message
     }
 
     return (
